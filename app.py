@@ -49,3 +49,15 @@ protected override async Task OnJoinAsync(JoinEvent ev)
         $"頻道 ID: {ev.Source.Id}\n" +
         $"用戶 ID: {ev.Source.UserId}");
 }
+protected override Task OnMemberLeaveAsync(MemberLeaveEvent ev)
+{
+    throw new Exception(
+        $"OnMemberLeave 成員離開事件\n" +
+        $"類型: {ev.Type.ToString()}\n" +
+        $"時間: {ev.Timestamp}\n" +
+        $"來源類型: {ev.Source.Type.ToString()}\n" +
+        $"頻道 ID: {ev.Source.Id}\n" +
+        $"用戶 ID: {ev.Source.UserId}\n" +
+        $"離開用戶ID: {string.Join(",\n", ev.Left.Members.Select(it => it.UserId))}");
+}
+
